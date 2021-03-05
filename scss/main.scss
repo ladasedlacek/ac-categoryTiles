@@ -1,0 +1,175 @@
+// colors
+$primary: #0094E7;
+$secondary: #f3f3f3;
+$white: #fff ;
+$black: #000;
+$zabava: #0094e7;
+
+// font
+@mixin roboto{
+    font-family: 'Roboto', sans-serif;
+}
+
+@mixin flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+// tiles
+.lp-categoryTiles{
+    .hidden{
+        display: none;
+    }
+
+    .lp-container{
+        max-width: 1084px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    &__boxes{
+        @include flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        margin-top: 32px;
+        width: calc(100% + 20px);
+        margin-left: -10px;
+    }
+
+    &__box{
+        border-radius: 4px;
+        box-shadow: 0 1px 4px rgba($color: $black, $alpha: .15);
+        text-align: left;
+        padding: 10px 14px 10px 20px; 
+        @include flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px;
+        width: 348px;
+        transition: .1s ease-in-out;
+        position: relative;
+        background-color: $white;
+        text-decoration: none;
+        box-sizing: border-box;
+
+        &:hover{
+            box-shadow: 0 2px 6px rgba($color: $black, $alpha: .15);
+            cursor: pointer;
+
+            .lp-categoryTiles__left--name{
+                color: $zabava;
+            }
+
+            .lp-categoryTiles__right--icon{
+                path,
+                use{
+                    fill: $zabava;
+                }
+            }
+        }
+    }
+
+    &__left{
+        @include flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: center;
+
+        figure{
+            width: 80px;
+            height: 80px;
+            margin: 0;
+        }
+
+        &--image{
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0 auto;
+        }
+
+        &--name{
+            font-size: 16px;
+            font-weight: 600;
+            @include roboto;
+            color: $black;
+            transition: .3s ease-in-out;
+            display: inline-block;
+            margin: 10px 10px 10px 20px;
+            line-height: 1.5;
+            width: calc(100% - 110px);
+        }
+    }
+
+    &__right{
+        &--icon{
+            width: 20px;
+            height: 20px;
+
+            path,
+            use{
+                fill: $black;
+                transition: .3s ease-in-out;
+            }
+        }
+    }
+}
+
+// LAYOUT-0
+.layout-0 #articlePage{
+    .lp-container{
+        max-width: 860px;
+    }
+
+    .lp-categoryTiles__box{
+        width: 273px;
+    }
+
+    .lp-categoryTiles__left--name{
+        width: calc(100% - 95px);
+    }
+
+    .lp-categoryTiles__left figure{
+        width: 65px;
+        height: 65px;
+    }
+} 
+    
+// mobile and app
+@media only screen and (max-width: 980px){
+    .mobile #articlePage,
+    .mobileapp #articlePage{
+        .lp-container{
+            padding-left: 32px;
+            padding-right: 32px;
+            max-width: 100%;
+        }
+
+        .lp-categoryTiles__boxes{
+            justify-content: center;
+        }
+
+        .lp-categoryTiles__box{
+            width: 273px;
+        }
+
+        .lp-categoryTiles__left--name{
+            width: calc(100% - 95px);
+        }
+    
+        .lp-categoryTiles__left figure{
+            width: 65px;
+            height: 65px;
+        }
+    }
+}
+
+@media only screen and (max-width: 480px){
+    .mobile #articlePage,
+    .mobileapp #articlePage{
+        .lp-categoryTiles__box{
+            width: 100%;
+        }
+    }
+}
